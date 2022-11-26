@@ -1,0 +1,4 @@
+bases:
+  - ../../application
+patches:
+  - image.yaml

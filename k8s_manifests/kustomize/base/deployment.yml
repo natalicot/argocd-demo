@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-awsome-app
+  labels:
+    app: my-awsome-app
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: my-awsome-app
+  template:
+    metadata:
+      labels:
+        app: my-awsome-app
+    spec:
+      containers:
+      - name: my-awsome-app
+        image: natalicot/my_awsome_app:1.0.3
+        ports:
+        - containerPort: 8080

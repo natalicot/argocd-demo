@@ -1,0 +1,9 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-awsome-app
+spec:
+    spec:
+      containers:
+      - name: my-awsome-app
+        image: natalicot/my_awsome_app:1.0.4

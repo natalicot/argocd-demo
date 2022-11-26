@@ -11,7 +11,7 @@ spec:
   source:
     repoURL: https://github.com/natalicot/argocd-demo.git
     targetRevision: HEAD
-    path: ./YML/app1
+    path: ./k8s_manifests/YML/app1/
    
   # Destination cluster and namespace to deploy the application
   destination:
