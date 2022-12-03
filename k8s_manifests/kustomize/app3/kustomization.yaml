@@ -1,4 +1,4 @@
 bases:
-  - ../../application
+  - ../base/
 patches:
-  - image.yaml
+  - image.yml
