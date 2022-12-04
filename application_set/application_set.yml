@@ -1,0 +1,42 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: multi-cluster-application-set
+  namespace: argocd
+spec:
+  generators:
+      # matrix 'parent' generator
+    - matrix:
+        generators:
+          # git generator, 'child' #1
+          - git:
+              repoURL: https://github.com/natalicot/argocd-demo.git
+              revision: HEAD
+              directories:
+                - path: application_set/applications/*
+          - clusters: {} # Automatically use all clusters defined within Argo CD
+  template:      
+    metadata:
+      name: '{{path.basename}}-{{name}}'
+    spec:
+      # The project the application belongs to.
+      project: default
+
+      # Source of the application manifests
+      source:
+        repoURL: https://github.com/natalicot/argocd-demo.git
+        targetRevision: HEAD
+        path: '{{path}}'
+      
+      # Destination cluster and namespace to deploy the application
+      destination:
+        server: '{{server}}'
+        namespace: apps
+
+      # Sync policy
+      syncPolicy:
+        syncOptions:
+          - CreateNamespace=true  
+        automated: # automated sync by default retries failed attempts 5 times with following delays between attempts ( 5s, 10s, 20s, 40s, 80s ); retry controlled using `retry` field.
+          prune: true # Specifies if resources should be pruned during auto-syncing ( false by default ).
+          selfHeal: true
