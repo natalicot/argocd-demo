@@ -7,4 +7,4 @@ spec:
     spec:
       containers:
       - name: my-awsome-app
-        image: natalicot/my_awsome_app:1.0.0
+        image: natalicot/my_awsome_app:1.0.3

@@ -2,3 +2,5 @@ bases:
   - ../../base/
 patches:
   - image.yml
+
+namePrefix: app3-
