@@ -1,5 +1,5 @@
 #!bin/bash
-
+#ll
 # Crete cluster
 kind create cluster --config=kind/cluster.yml
 
